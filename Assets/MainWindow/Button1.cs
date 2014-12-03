@@ -6,15 +6,13 @@ using System;
 
 public class Button1 : MonoBehaviour {
 	public main CurrentMenu;
-
+	public InputField[] user;
 	public void ClickTest(main current){
-		InputField[] _user = GetComponentsInChildren<InputField>();
-		string name = _user [0].text;
-		string password = _user [1].text;
-		string URL = "http://192.168.1.79/www8/UdlapParking/login.php";
+		user = GetComponentsInChildren<InputField>();
+		string name = user [0].text;
+		string password = user [1].text;
+		string URL = "http://localhost/www8/UdlapParking/login.php";
 
-		Debug.Log(_user[0].text);
-		Debug.Log(_user[1].text);
 
 		StartCoroutine(HandleLogin(name, password,URL,current));
 
@@ -44,8 +42,9 @@ public class Button1 : MonoBehaviour {
 				}
 				CurrentMenu = m;
 				CurrentMenu.IsOpen = true;
-				Debug.Log(a);
-				
+				foreach(var p in user){
+					p.text = "";
+				}
 			}		
 			else{
 				a = "Usuario invalido";

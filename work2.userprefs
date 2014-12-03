@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MainWindow\Button1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Info\displayInfo.cs">
     <Files>
-      <File FileName="Assets\MainWindow\Button1.cs" Line="15" Column="3" />
-      <File FileName="Assets\MainWindow\Manager.cs" Line="1" Column="1" />
-      <File FileName="Assets\MainWindow\main.cs" Line="1" Column="1" />
+      <File FileName="Assets\Info\displayInfo.cs" Line="43" Column="9" />
+      <File FileName="Assets\MainWindow\Button1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Parking\ButtonReturn.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

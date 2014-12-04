@@ -7,7 +7,10 @@ using System;
 
 public class createButton : MonoBehaviour
 {
-
+	public GameObject itemName;
+	public main CurrentMenu;
+	public main NextMenu;
+	string URL_INFO = "http://localhost/www8/UdlapParking/getInfo.php";
 
 	public GameObject itemPrefab;
 		//string url = "http://images.earthcam.com/ec_metros/ourcams/fridays.jpg";
@@ -95,6 +98,12 @@ public class createButton : MonoBehaviour
 						x = rectTransform.offsetMin.x + width;
 						y = rectTransform.offsetMin.y + height;
 						rectTransform.offsetMax = new Vector2 (x, y);
+						Button button = newItem.GetComponent<Button>();
+
+						//Add your new event
+			AddListener(button, nombres[i]); // Using the iterator as argument will capture the variable
+			
+
 				}
 		}
 
@@ -105,8 +114,7 @@ public class createButton : MonoBehaviour
 				t.text = nombre;
 				t.fontSize = 30;
 				t.fontStyle = FontStyle.Bold;
-				t.color = Color.white;
-
+				t.color = Color.black;
 				
 				/*Image i = b.GetComponentInChildren<Image> ();
 
@@ -120,4 +128,51 @@ public class createButton : MonoBehaviour
 		i.sprite = sprite;*/
 	
 		}
+
+	IEnumerator HandleInfo(String nom){
+		
+		string infoURL = URL_INFO + "?pid=" + nom;
+		WWW infoReader = new WWW (infoURL);
+		yield return infoReader;
+		Debug.Log(infoReader.text);
+		
+		JsonData jsonExercise = JsonMapper.ToObject(infoReader.text); // convert json data to object. 
+		
+		var a = jsonExercise["success"].ToString();
+		if (infoReader.error != null) {
+			a = "Error al conectar";
+			Debug.Log(a);
+		} 
+		else {
+			if(jsonExercise["success"].ToString() == "1"){
+				Text[] tt = itemName.GetComponentsInChildren<Text>();
+				tt[0].text= nom;
+				int cap = int.Parse(jsonExercise["estacionamiento"][0]["cap"].ToString());
+				int cup = int.Parse(jsonExercise["estacionamiento"][0]["cupo"].ToString());
+				int c = cap-cup;
+				tt[3].text = c+"";		
+				tt[4].text = cap+"";
+			}		
+			else{
+				a = "Usuario invalido";
+				Debug.Log(a);
+				
+			}
+		}
+		
+	}
+	// Outside of method running the above
+	void AddListener(Button b, string value)
+	{
+		b.onClick.AddListener(() => checkInfo(value));
+	}
+	void checkInfo(string val){
+		StartCoroutine(HandleInfo(val));
+		if (CurrentMenu!= null) {
+			CurrentMenu.IsOpen = false;
+		}
+		CurrentMenu = NextMenu;
+		CurrentMenu.IsOpen = true;
+		Debug.Log (val);
+	}
 }

@@ -46,7 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Info\displayInfo.cs" />
+     <Compile Include="Assets\Info\Places.cs" />
+     <Compile Include="Assets\Info\StorePlaces.cs" />
      <Compile Include="Assets\MainWindow\Button1.cs" />
      <Compile Include="Assets\MainWindow\Manager.cs" />
      <Compile Include="Assets\MainWindow\main.cs" />

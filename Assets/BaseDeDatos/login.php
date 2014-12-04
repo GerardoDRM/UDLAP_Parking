@@ -1,70 +1,70 @@
 <?php
 
 /*
- * Following code will get the user and the password
+ * Codigo para la obtencion de
+ * los datos del moderador
  */
 
-// array for JSON response
+// JSON array
 $response = array();
 
 
-// include db connect class
+// Class de la conexion a la BD
 require("db_connect.php");
 
-// connecting to db
+// Conectando a la BD
 $db = new DB_CONNECT();
 
-// check for post data
-if (isset($_GET["user"]) && isset($_GET["password"])) {
-    $userName = $_GET['user'];
-	$password = $_GET['password'];
-	
-    // get a user from employe table
-    $result = mysql_query("SELECT idEmpleado,Nombre, Password FROM empleado WHERE empleado.idEmpleado = $userName and empleado.Password=$password");
+// Checamos los datos recibidos
+if (isset($_GET["username"]) && isset($_GET["password"])) {
+    $userName = $_GET['username'];
+	  $password = $_GET['password'];
+
+    // Obtener los datos del usuario
+    $result = mysql_query("SELECT nombre, password FROM moderador WHERE moderador.nombre = $userName and moderador.password= $password");
 
     if (!empty($result)) {
-        // check for empty result
+        // Checa si los resultados son vacios
         if (mysql_num_rows($result) > 0) {
 
             $result = mysql_fetch_array($result);
 
-            $employe = array();
-            $employe["id"] = $result["idEmpleado"];
-            $employe["userName"] = $result["Nombre"];
-            $employe["password"] = $result["Password"];
-           
-            // success
+            $moderador = array();
+            $moderador["userName"] = $result["nombre"];
+            $moderador["password"] = $result["password"];
+
+            // Exito
             $response["success"] = 1;
 
-            // user node
-            $response["employe"] = array();
+            // nodo usuario
+            $response["moderador"] = array();
 
-            array_push($response["employe"], $employe);
+            array_push($response["moderador"], $moderador);
 
-            // echoing JSON response
+            // echoing JSON
             echo json_encode($response);
         } else {
-            // no product found
+            // No se encontro
             $response["success"] = 0;
-            $response["message"] = "Not employe found";
+            $response["message"] = "No existe";
 
-            // echo no users JSON
+            // echo JSON
             echo json_encode($response);
         }
     } else {
-        // no product found
+        // No se encontro
         $response["success"] = 0;
-        $response["message"] = "Not employe found";
+        $response["message"] = "No existe";
 
-        // echo no users JSON
+        // echo JSON
         echo json_encode($response);
     }
 } else {
-    // required field is missing
+    // Campo requerido faltante
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+    $response["message"] = "Valores faltantes";
 
-    // echoing JSON response
+    // echoing JSON
     echo json_encode($response);
 }
 ?>

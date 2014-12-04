@@ -1,11 +1,12 @@
 <?php
 
 /*
- * All database connection variables
+ * Variables para la
+ * configuracion de la base de datos
  */
 
-define('DB_USER', "iomediam_parking"); // db user
-define('DB_PASSWORD', "cpDs1Qk4cf11h5y54"); // db password
-define('DB_DATABASE', "?"); // database name
-define('DB_SERVER', "iomediamx.com"); // db server
+define('DB_USER', "root"); // usuario
+define('DB_PASSWORD', "root"); // contraseña
+define('DB_DATABASE', "udlapparkingtest"); // nombre BD
+define('DB_SERVER', "localhost"); // BD servidor
 ?>

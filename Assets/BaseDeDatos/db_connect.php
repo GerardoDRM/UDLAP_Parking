@@ -1,47 +1,48 @@
 <?php
- 
+
 /**
- * A class file to connect to database
+ * Clase para la conexion a la
+ * base de datos
  */
 class DB_CONNECT {
- 
+
     // constructor
     function __construct() {
-        // connecting to database
+        // Conexion a la base
         $this->connect();
     }
- 
+
     // destructor
     function __destruct() {
-        // closing db connection
+        // cerrar la conexion
         $this->close();
     }
- 
+
     /**
-     * Function to connect with database
+     * Funcion para conectar con la base de datos
      */
     function connect() {
-        // import database connection variables
+        // importart las variables para la conexion
         require("db_config.php");
- 
-        // Connecting to mysql database
+
+        // Conectando con MySql
         $con = mysql_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die(mysql_error());
- 
-        // Selecing database
+
+        // Seleccionando la BD
         $db = mysql_select_db(DB_DATABASE) or die(mysql_error()) or die(mysql_error());
- 
-        // returing connection cursor
+
+        // regresa la conexion
         return $con;
     }
- 
+
     /**
-     * Function to close db connection
+     * Funcion para cerrar la conexion
      */
     function close() {
-        // closing db connection
+        // Cerrando la conexion
         mysql_close();
     }
- 
+
 }
- 
+
 ?>

@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{F4609F15-12C5-D860-75C1-366F1815EA75}</ProjectGuid>
+	<ProjectGuid>{C1FC8FFD-D0DB-EFE8-9700-CD9FE5EB9325}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -51,7 +51,7 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>C:/Users/Gerardo/Documents/AdmonSoft/user/Assets/code/LitJson.dll</HintPath>
+ <HintPath>C:/Users/Gerardo/Documents/AdmonSoft/Unity/usuario/Assets/code/LitJson.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

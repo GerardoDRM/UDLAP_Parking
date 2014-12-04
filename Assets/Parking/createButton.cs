@@ -168,11 +168,11 @@ public class createButton : MonoBehaviour
 	}
 	void checkInfo(string val){
 		StartCoroutine(HandleInfo(val));
-		if (CurrentMenu!= null) {
+		if (CurrentMenu == true) {
 			CurrentMenu.IsOpen = false;
+			NextMenu.IsOpen = true;
 		}
-		CurrentMenu = NextMenu;
-		CurrentMenu.IsOpen = true;
+
 		Debug.Log (val);
 	}
 }

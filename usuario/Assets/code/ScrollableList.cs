@@ -11,7 +11,7 @@ public class ScrollableList : MonoBehaviour
 	string URL_INFO = "http://localhost/www8/UdlapParking/getTodoEstacionamiento.php";
 	string [] id,nombre,tipo,capacidad,cupo,imagen;
 
-    void Start()
+    public void Start()
     {
 		StartCoroutine (HandleInfo ());
 
@@ -115,24 +115,30 @@ public class ScrollableList : MonoBehaviour
 		int cu = int.Parse (cup);
 		int disponibles = ca - cu;
 		float porcentaje = (disponibles * 100) / ca;
-		estacionamiento [3].text = porcentaje.ToString ()+"%";
+		estacionamiento [3].text = porcentaje.ToString ();
 
 
 
 	}
 	IEnumerator HandleImage (GameObject b, string img)
 	{
-		string url = "http://images.earthcam.com/ec_metros/ourcams/fridays.jpg";
-		Image[] i = b.GetComponentsInChildren<Image> ();
-		i[1].color = new Color32(4, 180, 231,255);
 
+		Text[] estacionamiento = b.GetComponentsInChildren<Text> ();
+		int val = int.Parse(estacionamiento [3].text);
+		Image[] i = b.GetComponentsInChildren<Image> ();
+		if(val > 70 && val<=100)
+			i[1].color = new Color(0,  0.6F, 0, 1);
+		if(val > 40 && val<=69)
+			i[1].color = new Color(0.8F, 0.8F, 0, 1);
+		if(val >= 0 && val<=39)
+			i[1].color = new Color(0.8F, 0, 0.1F, 1);
 		// Start a download of the given URL
 		var www = new WWW(img);
 		// wait until the download is done
 		yield return www;
 		SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
 		Sprite sprite = new Sprite();
-		sprite = Sprite.Create(www.texture, new Rect(0, 0, 300, 300),new Vector2(0, 0),100.0f);
+		sprite = Sprite.Create(www.texture, new Rect(0, 0, 500, 300),new Vector2(0, 0),100.0f);
 		i[1].sprite = sprite;
 	}
 

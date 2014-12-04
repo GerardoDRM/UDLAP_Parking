@@ -10,22 +10,23 @@ using System;
  */
 public class Button1 : MonoBehaviour {
 	public main CurrentMenu;
+	public main nextMenu;
 	public InputField[] user;
 
 	//Metodo de llamada para el boton al OnClick()
-	public void ClickTest(main current){
+	public void ClickTest(){
 		user = GetComponentsInChildren<InputField>();
 		string name = user [0].text;
 		string password = user [1].text;
 		string URL = "http://localhost/www8/UdlapParking/login.php";
 		
 		//Proceso en background
-		StartCoroutine(HandleLogin(name, password,URL,current));
+		StartCoroutine(HandleLogin(name, password,URL));
 	}//ClickTest
 
 	// Este metodo realizara la verificacion del usuario 
 	// a travez de un servicio web
-	IEnumerator HandleLogin(string name, string password, string URL,main m){
+	IEnumerator HandleLogin(string name, string password, string URL){
 		name = "'"+ name +"'";
 		password = "'"+ password +"'";
 		//Se crea el URL
@@ -47,11 +48,11 @@ public class Button1 : MonoBehaviour {
 				a = "Exito";
 				//Si se realzia correctamente se pasa a la 
 				//siguiente pantalla
-				if (CurrentMenu!= null) {
+				if (CurrentMenu == true) {
 					CurrentMenu.IsOpen = false;
+					nextMenu.IsOpen = true;
 				}
-				CurrentMenu = m;
-				CurrentMenu.IsOpen = true;
+
 				foreach(var p in user){
 					p.text = "";
 				}

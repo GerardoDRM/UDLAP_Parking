@@ -8,7 +8,7 @@ public class ScrollableList : MonoBehaviour
 {
     public GameObject itemPrefab;
     public int itemCount, columnCount = 1;
-	string URL_INFO = "http://localhost/www8/UdlapParking/getTodoEstacionamiento.php";
+	string URL_INFO = "http://iomediamx.com/UDLAPparking/getTodoEstacionamiento.php";
 	string [] id,nombre,tipo,capacidad,cupo,imagen;
 
     public void Start()
@@ -45,8 +45,11 @@ public class ScrollableList : MonoBehaviour
 					nombre [i]= jsonExercise ["estacionamiento"][i]["nombre"].ToString();				
 					tipo [i]= jsonExercise ["estacionamiento"][i]["tipo"].ToString();				
 					capacidad [i]= jsonExercise ["estacionamiento"][i]["capacidad"].ToString();				
-					cupo [i] = jsonExercise ["estacionamiento"][i]["cupo"].ToString();				
-					imagen [i]= jsonExercise ["estacionamiento"][i]["imagen"].ToString();
+					cupo [i] = jsonExercise ["estacionamiento"][i]["cupo"].ToString();		
+					string temp = jsonExercise ["estacionamiento"][i]["imagen"].ToString().Replace(@"\", string.Empty);
+					Debug.Log(temp);
+					imagen [i]= temp;
+				
 				}
 				create();
 			} else {

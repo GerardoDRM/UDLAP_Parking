@@ -10,7 +10,7 @@ public class createButton : MonoBehaviour
 	public GameObject itemName;
 	public main CurrentMenu;
 	public main NextMenu;
-	string URL_INFO = "http://localhost/www8/UdlapParking/getInfo.php";
+	string URL_INFO = "http://iomediamx.com/UDLAPparking/getInfo.php";
 
 	public GameObject itemPrefab;
 		//string url = "http://images.earthcam.com/ec_metros/ourcams/fridays.jpg";
@@ -28,7 +28,7 @@ public class createButton : MonoBehaviour
 
 		IEnumerator HandleInfo ()
 		{
-				string url = "http://localhost/www8/UdlapParking/info_estacionamiento.php";
+		string url = "http://iomediamx.com/UDLAPparking/info_estacionamiento.php";
 				// Start a download of the given URL
 				var estacionamientos = new WWW (url);
 				// wait until the download is done

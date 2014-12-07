@@ -18,7 +18,7 @@ public class Button1 : MonoBehaviour {
 		user = GetComponentsInChildren<InputField>();
 		string name = user [0].text;
 		string password = user [1].text;
-		string URL = "http://localhost/www8/UdlapParking/login.php";
+		string URL = "http://iomediamx.com/UDLAPparking/login.php";
 		
 		//Proceso en background
 		StartCoroutine(HandleLogin(name, password,URL));

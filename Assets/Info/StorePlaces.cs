@@ -30,7 +30,7 @@ public class StorePlaces : MonoBehaviour {
 		form.AddField("nom",nombre);
 		form.AddField ("cap",newVal.ToString());
 		//Creamos el URL
-		string URL = "http://localhost/www8/UdlapParking/cambioCupo.php";
+		string URL = "http://iomediamx.com/UDLAPparking/cambioCupo.php";
 		WWW info = new WWW (URL, form);
 		yield return info;
 		Debug.Log (info.text);
